@@ -1,0 +1,70 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>Stuff is being done here</title>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            var $lastSearch = "\0";
+
+            $("#searchButton").click(function () {
+                var $search = $("#searchText").val();
+
+                if ($search != $lastSearch) {
+                    $("#loader").css({ display: "block" });
+                    $("#content").find("ul").remove();
+                    var $ul = $("<ul />");
+                    var $li;
+
+                    $.get("/GetByName/" + $search, null, function (result) {
+                        $("#loader").css({ display: "none" });
+
+                        if (result && result.length > 0) {
+                            for (i = 0; i < result.length; i++) {
+                                $li = $("<li />");
+                                $p = $("<p />");
+
+                                $p.append(result[i].Name + " ");
+                                $p.append(result[i].LastName + " - ");
+                                $p.append(result[i].Cedula);
+
+                                $li.append($p);
+                                $ul.append($li);
+                            }
+                            $("#content").append($ul);
+                        } else {
+                            $ul = $("<ul />").append($("<li />").append("Results not found."));
+                            $("#content").append($ul);
+                        }
+
+                        $lastSearch = $search;
+                    });
+                }
+            });
+
+            $("#searchText").keyup(function (e) {
+                if (e.keyCode == 13 || (this.value.length >= 0 && $("#chkAutoSearch").is(":checked")))
+                    $("#searchButton").click();
+            });
+
+            $("#searchButton").click();
+        });
+    </script>
+</head>
+<body>
+    <div id="dataHolder">
+        <input type="text" id="searchText" name="searchText" style="float: left" value="@Model" />
+        <label>
+            <input type="checkbox" id="chkAutoSearch" checked/>
+            Auto Search
+        </label>
+        <div id="searchButton" style="float: left"> Search </div>
+
+        <div id="content" style="clear: both">
+            <div id="loader" style="display: none;">Loading</div>
+        </div>
+    </div>
+</body>
+</html>
