@@ -1,10 +1,9 @@
-﻿<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width" />
-    <title>Stuff is being done here</title>
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+﻿@{
+    Layout = "/_Layout";
+    ViewBag.Title = "Stuff is being done here";
+}
+
+@section Scripts{
     <script>
         $(document).ready(function () {
             var $lastSearch = "\0";
@@ -52,19 +51,18 @@
             $("#searchButton").click();
         });
     </script>
-</head>
-<body>
-    <div id="dataHolder">
-        <input type="text" id="searchText" name="searchText" style="float: left" value="@Model" />
-        <label>
-            <input type="checkbox" id="chkAutoSearch" checked/>
-            Auto Search
-        </label>
-        <div id="searchButton" style="float: left"> Search </div>
+}
 
-        <div id="content" style="clear: both">
-            <div id="loader" style="display: none;">Loading</div>
-        </div>
+<div id="dataHolder">
+    <input type="text" id="searchText" name="searchText" style="float: left" value="@Model" />
+    <label>
+        <input type="checkbox" id="chkAutoSearch" checked/>
+        Auto Search
+    </label>
+    <div id="searchButton" style="float: left"> Search </div>
+
+    <div id="content" style="clear: both">
+        <div id="loader" style="display: none;">Loading</div>
     </div>
-</body>
-</html>
+</div>
+

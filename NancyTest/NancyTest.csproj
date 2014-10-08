@@ -70,7 +70,7 @@
     <Compile Include="Customs\NotProperRequestException.cs" />
     <Compile Include="DAL\Extensions\NegotiatorExtensions.cs" />
     <Compile Include="DAL\Implementation\Provider.cs" />
-    <Compile Include="Home\IndexModule.cs" />
+    <Compile Include="Home\HomeModule.cs" />
     <Compile Include="DAL\Implementation\Abstract\IProvider.cs" />
     <Compile Include="DAL\Models\Model.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -80,6 +80,7 @@
     <Content Include="packages.config" />
     <Content Include="Home\index.cshtml" />
     <Content Include="Search\Search.cshtml" />
+    <Content Include="Shared\_Layout.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

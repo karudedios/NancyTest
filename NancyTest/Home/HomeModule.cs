@@ -7,9 +7,9 @@ namespace NancyTest
 {
     using Nancy;
 
-    public class IndexModule : NancyModule
+    public class HomeModule : NancyModule
     {
-        public IndexModule()
+        public HomeModule()
         {
             Get["/"] = Get["/Home"] = Get["/Home/{name?}"] = parameters =>
                 Negotiate
@@ -17,15 +17,7 @@ namespace NancyTest
                     .WithView("index")
                     .WithModel(new { Name = parameters.name.Value ?? "Guest" });
 
-            Put["/"] = _params =>
-               this.Bind<List<tempModel>>().Count == 0 ? new { Message = "Failure", Status = 0 } : new { Message = "Successful", Status = 1 };
+            Get["/Home/RedirectToSearch"] = x => Response.AsRedirect("/Search/");
         }
-    }
-
-    public class tempModel
-    {
-        public int ID { get; set; }
-        public string Name { get; set; }
-        public string LastName { get; set; }
     }
 }

@@ -19,8 +19,9 @@ namespace NancyTest
             container.Register<IProvider>(new Provider());
 
             Conventions.ViewLocationConventions.Clear();
-            Conventions.ViewLocationConventions.Add((viewName, model, context) => string.Concat("Home/", viewName));
-            Conventions.ViewLocationConventions.Add((viewName, model, context) => string.Concat("Search/", viewName));
+            Conventions.ViewLocationConventions.Add((viewName, model, context) => string.Concat("Shared/", viewName));
+            Conventions.ViewLocationConventions.Add((viewName, model, context) => string.Concat(context.ModuleName, "/", viewName));
+            //Conventions.ViewLocationConventions.Add((viewName, model, context) => string.Concat("Search/", viewName));
 
             //pipelines.OnError += (ctx, err) => HandleExceptions(err, ctx); ;
         }
