@@ -1,50 +1,46 @@
-﻿<!DOCTYPE html>
+﻿@{
+    ViewBag.Title = (ViewBag.Title.Value ?? "Nancy Test");
+    ViewBag.Message = (ViewBag.Message.Value ?? "Where you test stuff regarding NancyFx");
+}
+<!DOCTYPE html>
 
 <html>
 <head>
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     <meta name="viewport" content="width=device-width" />
-    <title>@ViewBag.Title</title>
-    <style>
-        html, body, header, footer, div, p, a  {
-            margin: 0;
-            padding: 0;
-        }
-
-        html, body {
-            width: 100%;
-            height: 100%;
-            position: relative;
-        }
-
-        header, footer {
-            padding: 10px;
-            text-align: center;
-            background: #1e3eff;
-        }
-
-        #mainSection {
-            width: 100%;
-            height: calc(100% - 96px);
-            padding-top: 10px;
-            padding-bottom: 10px;
-            background: #1e90ff;
-        }
-    </style>
+    <link rel="stylesheet" href="/Content/style.css" />
     @RenderSection("Header", false)
+    <title>@ViewBag.Title</title>
 </head>
     <body>
         <header>
-            Cabecera
+            <div id="upper">
+                <a href="~/Home">
+                    <img class="pull-left" src="~/Content/nancy-logo.png" alt="nancy logo" width="75" />
+                </a>
+            </div>
+            <div id="lower">
+                <h1 class="fira-sans big">@ViewBag.Title</h1>
+                <h2 class="fira-sans small">@ViewBag.Message</h2>
+            </div>
         </header>
+        <div class="divider"> </div>
+        <div class="blue triangle" style="margin-bottom: 10px;"></div>
 
         <section id="mainSection">
             @RenderBody()
         </section>
 
         <footer>
-            Pie de página
-            @RenderSection("Scripts", false)
+            <div class="white triangle"></div>
+            <div id="inner">
+                <div>
+                    <div class="square pull-left"></div>
+                    <div class="square center line"></div>
+                    <div class="square pull-right"></div>
+                </div>
+                @RenderSection("Scripts", false)
+            </div>
         </footer>
     </body>
 </html>
