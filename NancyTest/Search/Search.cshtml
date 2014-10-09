@@ -1,6 +1,7 @@
 ﻿@{
     Layout = "/_Layout";
     ViewBag.Title = "Stuff is being done here";
+    ViewBag.Message = "And whenever stuff is being done, is being done.";
 }
 
 @section Scripts{
@@ -13,29 +14,31 @@
 
                 if ($search != $lastSearch) {
                     $("#loader").css({ display: "block" });
-                    $("#content").find("ul").remove();
-                    var $ul = $("<ul />");
-                    var $li;
+                    $("#content").find(".result").remove();
+                    var $table = $("<table />").attr("class", "result full-width");
+                    var $rows;
 
                     $.get("/GetByName/" + $search, null, function (result) {
                         $("#loader").css({ display: "none" });
 
                         if (result && result.length > 0) {
+                            $rows = $("<tr />");
+                            $rows.append($("<th />").attr("class", "highlight").append("Name"));
+                            $rows.append($("<th />").attr("class", "highlight").append("Cedula"));
+                            $table.append($rows);
+
                             for (i = 0; i < result.length; i++) {
-                                $li = $("<li />");
-                                $p = $("<p />");
+                                $rows = $("<tr />");
 
-                                $p.append(result[i].Name + " ");
-                                $p.append(result[i].LastName + " - ");
-                                $p.append(result[i].Cedula);
+                                $rows.append($("<td />").append(result[i].Name + " " + result[i].LastName));
+                                $rows.append($("<td />").append(result[i].Cedula));
 
-                                $li.append($p);
-                                $ul.append($li);
+                                $table.append($rows);
                             }
-                            $("#content").append($ul);
+                            $("#content").append($table);
                         } else {
-                            $ul = $("<ul />").append($("<li />").append("Results not found."));
-                            $("#content").append($ul);
+                            $table = $("<ul />").attr("class", "result full-width").append($("<li />").append("Results not found."));
+                            $("#content").append($table);
                         }
 
                         $lastSearch = $search;
@@ -54,12 +57,17 @@
 }
 
 <div id="dataHolder">
-    <input type="text" id="searchText" name="searchText" style="float: left" value="@Model" />
-    <label>
-        <input type="checkbox" id="chkAutoSearch" checked/>
-        Auto Search
-    </label>
-    <div id="searchButton" style="float: left"> Search </div>
+    <div id="searchZone">
+        <input type="text" id="searchText" name="searchText" style="float: left" value="@Model" />
+        <button id="searchButton" style="float: left"> Search </button>
+
+        <span class="pull-right" style="line-height: 30px;">
+            <label class="fira-sans small" for="chkAutoSearch">
+                Auto Search
+            </label>
+        </span>
+        <input type="checkbox" id="chkAutoSearch" checked class="pull-right"/>
+    </div>
 
     <div id="content" style="clear: both">
         <div id="loader" style="display: none;">Loading</div>
