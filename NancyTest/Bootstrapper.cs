@@ -1,5 +1,10 @@
-﻿using Nancy.Bootstrapper;
+﻿using System.Configuration;
+using System.Linq;
+using Nancy.Bootstrapper;
+using Nancy.ErrorHandling;
 using Nancy.TinyIoc;
+using Nancy.ViewEngines;
+using NancyTest.Customs;
 using NancyTest.DAL.Implementation;
 using NancyTest.DAL.Implementation.Abstract;
 
@@ -15,13 +20,17 @@ namespace NancyTest
 
         protected override void ApplicationStartup(TinyIoCContainer container, IPipelines pipelines)
         {
+            CustomStatusCode.AddCode(404);
+            CustomStatusCode.AddCode(500);
+            CustomStatusCode.AddCode(400);
+
             base.ApplicationStartup(container, pipelines);
             container.Register<IProvider>(new Provider());
 
             Conventions.ViewLocationConventions.Clear();
             Conventions.ViewLocationConventions.Add((viewName, model, context) => string.Concat("Shared/", viewName));
+            Conventions.ViewLocationConventions.Add((viewName, model, context) => string.Concat("Codes/", viewName));
             Conventions.ViewLocationConventions.Add((viewName, model, context) => string.Concat(context.ModuleName, "/", viewName));
-            //Conventions.ViewLocationConventions.Add((viewName, model, context) => string.Concat("Search/", viewName));
 
             //pipelines.OnError += (ctx, err) => HandleExceptions(err, ctx); ;
         }

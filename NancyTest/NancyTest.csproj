@@ -72,6 +72,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Bootstrapper.cs" />
+    <Compile Include="Customs\CustomStatusCode.cs" />
     <Compile Include="DAL\Extensions\ModelExtensions.cs" />
     <Compile Include="Customs\NotProperRequestException.cs" />
     <Compile Include="DAL\Extensions\NegotiatorExtensions.cs" />
@@ -91,6 +92,7 @@
     <Content Include="Content\style.css.map">
       <DependentUpon>style.css</DependentUpon>
     </Content>
+    <Content Include="Codes\404.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

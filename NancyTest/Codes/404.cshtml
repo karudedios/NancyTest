@@ -1,0 +1,18 @@
+﻿@{
+    Layout = "/_Layout";
+    ViewBag.Title = "Oops! 404";
+    ViewBag.Message = "<br/> <p>Well, frankly speaking you attempted to enter a page that doesn't exists, which is wrong.</p>"
+        + "<p>Bad human, bad human.</p>";
+}
+
+@section Scripts {
+    <script>
+        $(document).ready(function () {
+            $("#mainSection").animate({
+                "min-height": "0"
+            }, 1000, function() {
+                $(this).remove();
+            });
+        });
+    </script>
+}
