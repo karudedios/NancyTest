@@ -1,4 +1,5 @@
-﻿using Nancy.ModelBinding;
+﻿using System.Web;
+using Nancy.ModelBinding;
 using NancyTest.DAL.Extensions;
 using NancyTest.DAL.Models;
 using System.Collections.Generic;
@@ -18,6 +19,12 @@ namespace NancyTest
                     .WithModel(new { Name = parameters.name.Value ?? "Guest" });
 
             Get["/Home/RedirectToSearch"] = x => Response.AsRedirect("/Search/");
+
+            Get["/Code/{error:int}"] = parameters =>
+            {
+                var response = new Response {StatusCode = ((HttpStatusCode) (int) parameters.error)};
+                return response;
+            };
         }
     }
 }
