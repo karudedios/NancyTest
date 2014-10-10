@@ -107,6 +107,10 @@ div.divider {
   border-left: 30px solid transparent;
   border-right: 30px solid transparent;
 }
+.triangle.upwards.blue {
+  border-top: none;
+  border-bottom: 20px solid #84c8c8;
+}
 .triangle.white {
   border-top: 20px solid #ffffff;
 }
@@ -166,3 +170,4 @@ div.divider {
   background: #84c8c8;
   font-family: 'Fira Sans';
 }
+/*# sourceMappingURL=style.css.map */
