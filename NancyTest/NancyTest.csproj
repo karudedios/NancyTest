@@ -62,6 +62,12 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\nancy-logo.png" />
+    <Content Include="Content\errorstyle.css">
+      <DependentUpon>errorstyle.less</DependentUpon>
+    </Content>
+    <Content Include="Content\errorstyle.min.css">
+      <DependentUpon>errorstyle.css</DependentUpon>
+    </Content>
     <Content Include="Content\style.css">
       <DependentUpon>style.less</DependentUpon>
     </Content>
@@ -93,6 +99,13 @@
       <DependentUpon>style.css</DependentUpon>
     </Content>
     <Content Include="Codes\404.cshtml" />
+    <Content Include="Shared\_ErrorLayout.cshtml" />
+    <Content Include="Content\errorstyle.less" />
+    <Content Include="Content\errorstyle.css.map">
+      <DependentUpon>errorstyle.css</DependentUpon>
+    </Content>
+    <Content Include="Codes\500.cshtml" />
+    <Content Include="Codes\400.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
