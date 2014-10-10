@@ -1,0 +1,35 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <meta name="viewport" content="width=device-width" />
+    <link rel="stylesheet" href="/Content/errorstyle.css" />
+    <title>@ViewBag.Title</title>
+    <script>
+        $(document).ready(function () {
+            $("#errorBody").css('top', ($(window).height() - $("#errorBody").height()) / 2);
+        });
+    </script>
+</head>
+    <body>
+        <div id="errorBody">
+            <hr />
+            <br />
+
+            <header>
+                <h1 class="fira-sans big center"> Something went terribly wrong! </h1>
+                <h3 class="fira-sans small center"> (There's no Jam for my sandwish) </h3>
+            </header>
+            <section id="mainSection">
+                <h2 class="fira-sans big">Error: @ViewBag.Error</h2>
+                <h2 class="fira-sans small">@Html.Raw(ViewBag.Message)</h2>
+                <br />
+                <h3 class="fira-sans small">@Html.Raw(ViewBag.Description)</h3>
+            </section>
+
+            <br />
+            <hr />
+        </div>
+    </body>
+</html>
