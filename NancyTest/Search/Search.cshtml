@@ -37,7 +37,13 @@
                             }
                             $("#content").append($table);
                         } else {
-                            $table = $("<ul />").attr("class", "result full-width").append($("<li />").append("Results not found."));
+                            var name =  $("#searchText").val();
+                            $table = $("<ul />").attr("class", "result full-width").append($("<li />").append("404: " + name + " was not found."));
+
+                            if (name.toLowerCase() === "jesus" || name.toLowerCase() === "jesús") {
+                                $table.find("li").append("<br />You have to find Jesus or you're going to hell");
+                            }
+
                             $("#content").append($table);
                         }
 
@@ -57,9 +63,9 @@
 }
 
 <div id="dataHolder">
-    <div id="searchZone">
-        <input type="text" id="searchText" name="searchText" style="float: left" value="@Model" />
-        <button id="searchButton" style="float: left"> Search </button>
+    <div id="searchZone" class="pull-right">
+        <input type="text" id="searchText" name="searchText" value="@Model" placeholder="Search for someone. Carlos for example."/>
+        <button id="searchButton"> Search </button>
 
         <span class="pull-right" style="line-height: 30px;">
             <label class="fira-sans small" for="chkAutoSearch">
