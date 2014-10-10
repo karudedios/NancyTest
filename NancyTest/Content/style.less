@@ -13,14 +13,24 @@ html, body {
 }
 
 input, button {
+    height:25px;
     width: 275px;
-    height: 25px;
-    border: 1px solid #84c8c8;
+    color: #000000;
+    outline: none;
+    border-radius: 5px;
+    background: white;
+    border: 1px solid #DDD;
     padding: 10px 10px 10px 10px;
+    box-shadow: 0 0 5px #DDD inset;
 
     -moz-box-sizing: border-box;
     -webkit-box-sizing: border-box;
     box-sizing: border-box;
+
+    -o-transition: background 200ms ease-in-out;
+    -moz-transition: background 200ms ease-in-out;
+    -webkit-transition: background 200ms ease-in-out;
+    transition: background 200ms ease-in-out;
 }
 
 input[type=checkbox] {
@@ -37,6 +47,16 @@ button {
     min-width: 80px;
     padding: 0;
 }
+
+button:hover {
+    cursor: pointer;
+    background: #84c8c8;
+}
+button:active {
+    cursor: pointer;
+    background: #DDD;
+}
+
 header, footer {
     width: 100%;
     font-size: 21px;
@@ -48,7 +68,8 @@ header, footer {
 }
 
 header {
-    height: 220px;
+    height: 270px;
+    margin-bottom: 20px;
     background: #808080;
 }
 
@@ -66,7 +87,7 @@ header #upper {
 
 header #lower {
     width: @containerDefaultWidth;
-    height: 125px;
+    height: 120px;
     margin: auto;
     padding-top: 25px;
 }
@@ -155,6 +176,11 @@ div.divider {
 
 .small {
     font-size: 16px;
+}
+
+.auto-size {
+    width: auto;
+    height: auto;
 }
 
 .line {
