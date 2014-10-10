@@ -79,9 +79,10 @@
   <ItemGroup>
     <Compile Include="Bootstrapper.cs" />
     <Compile Include="Customs\CustomStatusCode.cs" />
+    <Compile Include="Customs\NancyHttpStatusCodeExtension.cs" />
     <Compile Include="DAL\Extensions\ModelExtensions.cs" />
     <Compile Include="Customs\NotProperRequestException.cs" />
-    <Compile Include="DAL\Extensions\NegotiatorExtensions.cs" />
+    <Compile Include="Customs\NegotiatorExtensions.cs" />
     <Compile Include="DAL\Implementation\Provider.cs" />
     <Compile Include="Home\HomeModule.cs" />
     <Compile Include="DAL\Implementation\Abstract\IProvider.cs" />
@@ -93,19 +94,20 @@
     <Content Include="packages.config" />
     <Content Include="Home\index.cshtml" />
     <Content Include="Search\Search.cshtml" />
-    <Content Include="Shared\_Layout.cshtml" />
+    <Content Include="Layout\_Layout.cshtml" />
     <Content Include="Content\style.less" />
     <Content Include="Codes\404.cshtml" />
-    <Content Include="Shared\_ErrorLayout.cshtml" />
+    <Content Include="Layout\_ErrorLayout.cshtml" />
     <Content Include="Content\errorstyle.less" />
     <Content Include="Codes\500.cshtml" />
-    <Content Include="Codes\400.cshtml" />
+    <Content Include="Codes\401.cshtml" />
     <Content Include="Content\style.css.map">
       <DependentUpon>style.css</DependentUpon>
     </Content>
     <Content Include="Content\errorstyle.css.map">
       <DependentUpon>errorstyle.css</DependentUpon>
     </Content>
+    <Content Include="Codes\400.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
