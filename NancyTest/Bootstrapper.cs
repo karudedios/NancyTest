@@ -20,15 +20,18 @@ namespace NancyTest
 
         protected override void ApplicationStartup(TinyIoCContainer container, IPipelines pipelines)
         {
+            CustomStatusCode.AddCode(400);
+            CustomStatusCode.AddCode(401);
             CustomStatusCode.AddCode(404);
             CustomStatusCode.AddCode(500);
-            CustomStatusCode.AddCode(400);
+
+            CustomStatusCode.AllowIISErrors = true;
 
             base.ApplicationStartup(container, pipelines);
             container.Register<IProvider>(new Provider());
 
             Conventions.ViewLocationConventions.Clear();
-            Conventions.ViewLocationConventions.Add((viewName, model, context) => string.Concat("Shared/", viewName));
+            Conventions.ViewLocationConventions.Add((viewName, model, context) => string.Concat("Layout/", viewName));
             Conventions.ViewLocationConventions.Add((viewName, model, context) => string.Concat("Codes/", viewName));
             Conventions.ViewLocationConventions.Add((viewName, model, context) => string.Concat(context.ModuleName, "/", viewName));
 

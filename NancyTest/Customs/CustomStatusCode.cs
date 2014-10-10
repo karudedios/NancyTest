@@ -15,6 +15,7 @@ namespace NancyTest.Customs
         public static IEnumerable<int> Checks { get { return _checks; } }
 
         private readonly IViewRenderer _viewRenderer;
+        public static bool AllowIISErrors { get; set; }
 
         public CustomStatusCode(IViewRenderer viewRenderer)
         {
@@ -23,7 +24,7 @@ namespace NancyTest.Customs
 
         public bool HandlesStatusCode(HttpStatusCode statusCode, NancyContext context)
         {
-            return (_checks.Any(x => x == (int)statusCode));
+            return (_checks.Any(x => x == (int)statusCode)) || (!AllowIISErrors && statusCode.IsError());
         }
 
         public static void AddCode(int code)
@@ -53,7 +54,7 @@ namespace NancyTest.Customs
         {
             try
             {
-                var response = _viewRenderer.RenderView(context, (int)statusCode + ".cshtml", context.GetExceptionDetails());
+                var response = _viewRenderer.RenderView(context, (_checks.Any(x => x == (int)statusCode) ? (int)statusCode : 500) + ".cshtml", context.GetExceptionDetails());
                 response.StatusCode = statusCode;
                 context.Response = response;
             }
