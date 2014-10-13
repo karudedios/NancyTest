@@ -1,0 +1,50 @@
+﻿@{
+    Layout = "/_Layout";
+    ViewBag.Title = "Add New Item";
+    ViewBag.Message = "Add a brand new item to the collection";
+}
+
+@section Scripts {
+    <script>
+        $(document).ready(function() {
+            $("#Add").click(function() {
+                var name, cedula, lastname;
+                name = $("input[name=Name]").val();
+                cedula = $("input[name=Cedula]").val();
+                lastname = $("input[name=lastName]").val();
+
+                $.ajax({
+                        type: "PUT",
+                        url: "/Add",
+                        data: { "Name": name, "LastName": lastname, "Cedula": cedula }
+                    })
+                    .done(function(result) {
+                        if (result)
+                            alert("Added");
+                        else
+                            alert("Failed to add");
+
+                        $("input[name=Name]").val("");
+                        $("input[name=Cedula]").val("");
+                        $("input[name=lastName]").val("");
+                    });
+            });
+        });
+    </script>
+}
+
+<div class="isolated">
+    <h3 class="fira-sans small line">Name: </h3>
+    <input type="text" class="block" placeholder="Name" name="Name" />
+    <br/>
+
+    <h3 class="fira-sans small line">Last Name:</h3>
+    <input type="text" class="block" placeholder="Last Name" name="lastName" />
+    <br />
+
+    <h3 class="fira-sans small line">Cedula: </h3>
+    <input type="text" class="block" placeholder="Cedula" name="Cedula" />
+    <br />
+
+    <button id="Add" class="pull-left">Add</button>
+</div>
