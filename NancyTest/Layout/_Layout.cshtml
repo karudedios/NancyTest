@@ -5,13 +5,15 @@
 <!DOCTYPE html>
 
 <html>
-<head>
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-    <meta name="viewport" content="width=device-width" />
-    <link rel="stylesheet" href="/Content/style.min.css" />
-    @RenderSection("Header", false)
-    <title>@ViewBag.Title</title>
-</head>
+    <head>
+        <meta name="viewport" content="width=device-width" />
+
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+        <link rel="stylesheet" media="screen" href="~/Content/sidebar.min.css" />
+        <link rel="stylesheet" href="/Content/style.min.css" />
+        @RenderSection("Header", false)
+        <title>@ViewBag.Title</title>
+    </head>
     <body>
         <header>
             <div id="upper">
@@ -23,7 +25,7 @@
                 <h1 class="fira-sans big">@ViewBag.Title</h1>
                 <h2 class="fira-sans small">@Html.Raw(ViewBag.Message)</h2>
             </div>
-            <div class="divider"> </div>
+            <div class="divider"></div>
             <div class="blue triangle"></div>
         </header>
 
@@ -34,13 +36,37 @@
         <footer>
             <div class="white triangle"></div>
             <div id="inner">
-                <div>
-                    <div class="square pull-left"></div>
-                    <div class="square center line"></div>
-                    <div class="square pull-right"></div>
+                <div class="row">
+                    <div class="square pull-left">
+                        <img src="~/Content/nancy-logo.png" width="120" />
+                        <h3 class="fira-sans medium"> You can </h3>
+                        <p class="fira-sans tiny">do this</p>
+                    </div>
+                    <div class="square center line">
+                        <img src="~/Content/nancy-logo.png" width="120" />
+                        <h3 class="fira-sans medium"> You can </h3>
+                        <p class="fira-sans tiny">do that</p>
+                    </div>
+                    <div class="square pull-right">
+                        <img src="~/Content/nancy-logo.png" width="120" />
+                        <h3 class="fira-sans medium"> You can </h3>
+                        <p class="fira-sans tiny">do those</p>
+                    </div>
                 </div>
-                @RenderSection("Scripts", false)
+            </div>
+            <div id="below">
+                <div class="row">
+                    <div class="pull-left halfwidth">
+                        <h3 class="fira-sans medium">Stuff</h3>
+                    </div>
+                    <div class="pull-right halfwidth">
+                        <h3 class="fira-sans medium">More Stuff</h3>
+                    </div>
+                </div>
             </div>
         </footer>
+
+        @Html.Partial("/_SidebarPartial")
+        @RenderSection("Scripts", false)
     </body>
 </html>

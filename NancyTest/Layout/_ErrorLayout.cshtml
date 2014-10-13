@@ -8,17 +8,17 @@
     <title>@ViewBag.Title</title>
     <script>
         $(document).ready(function () {
-            var seconds = 11;
+            //var seconds = 11;
             $("#errorBody").css('top', ($(window).height() - $("#errorBody").height()) / 2);
-            setInterval(function () {
-                if (seconds >= 0) {
-                if (seconds <= 10)
-                    $("#counter").text(seconds);
-                    seconds--;
-                } else
-                    location.href = "/Home/";
+            //setInterval(function () {
+            //    if (seconds >= 0) {
+            //    if (seconds <= 10)
+            //        $("#counter").text(seconds);
+            //        seconds--;
+            //    } else
+            //        location.href = "/Home/";
 
-            }, 1000);
+            //}, 1000);
         });
     </script>
 </head>
@@ -37,7 +37,8 @@
                 <br />
                 <h3 class="fira-sans small">@Html.Raw(ViewBag.Description)</h3>
                 <br />
-                <h3 class="fira-sans small">We'll send you home in <em id="counter">a couple of</em> seconds, just be patient.</h3>
+                @*<h3 class="fira-sans small">We'll send you home in <em id="counter">a couple of</em> seconds, just be patient.</h3>*@
+                <h3 class="fira-sans small">You should probably <a href="/Home">go home</a>.</h3>
             </section>
 
             <br />
