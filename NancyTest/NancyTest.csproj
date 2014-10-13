@@ -68,6 +68,12 @@
       <DependentUpon>errorstyle.css</DependentUpon>
     </Content>
     <Content Include="Content\nancy-logo.png" />
+    <Content Include="Content\sidebar.css">
+      <DependentUpon>sidebar.less</DependentUpon>
+    </Content>
+    <Content Include="Content\sidebar.min.css">
+      <DependentUpon>sidebar.css</DependentUpon>
+    </Content>
     <Content Include="Content\style.css">
       <DependentUpon>style.less</DependentUpon>
     </Content>
@@ -78,36 +84,52 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Bootstrapper.cs" />
-    <Compile Include="Customs\CustomStatusCode.cs" />
-    <Compile Include="Customs\NancyHttpStatusCodeExtension.cs" />
+    <Compile Include="Customs\Implementations\CustomStatusCode.cs" />
+    <Compile Include="Customs\Extensions\NancyHttpStatusCodeExtension.cs" />
     <Compile Include="DAL\Extensions\ModelExtensions.cs" />
-    <Compile Include="Customs\NotProperRequestException.cs" />
-    <Compile Include="Customs\NegotiatorExtensions.cs" />
+    <Compile Include="Customs\Exceptions\NotProperRequestException.cs" />
+    <Compile Include="Customs\Extensions\NegotiatorExtensions.cs" />
     <Compile Include="DAL\Implementation\Provider.cs" />
-    <Compile Include="Home\HomeModule.cs" />
+    <Compile Include="Features\Home\HomeModule.cs" />
     <Compile Include="DAL\Implementation\Abstract\IProvider.cs" />
     <Compile Include="DAL\Models\Model.cs" />
+    <Compile Include="Features\Model\ModelModule.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Search\SearchModule.cs" />
+    <Compile Include="Features\Search\SearchModule.cs" />
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
-    <Content Include="Home\index.cshtml" />
-    <Content Include="Search\Search.cshtml" />
+    <Content Include="Features\Home\index.cshtml" />
+    <Content Include="Features\Search\Search.cshtml" />
     <Content Include="Layout\_Layout.cshtml" />
     <Content Include="Content\style.less" />
-    <Content Include="Codes\404.cshtml" />
+    <Content Include="Features\Errors\404.cshtml" />
     <Content Include="Layout\_ErrorLayout.cshtml" />
     <Content Include="Content\errorstyle.less" />
-    <Content Include="Codes\500.cshtml" />
-    <Content Include="Codes\401.cshtml" />
+    <Content Include="Features\Errors\500.cshtml" />
+    <Content Include="Features\Errors\401.cshtml" />
     <Content Include="Content\style.css.map">
       <DependentUpon>style.css</DependentUpon>
     </Content>
     <Content Include="Content\errorstyle.css.map">
       <DependentUpon>errorstyle.css</DependentUpon>
     </Content>
-    <Content Include="Codes\400.cshtml" />
+    <Content Include="Features\Errors\400.cshtml" />
+    <Content Include="Features\Model\Add.cshtml" />
+    <Content Include="Layout\_SidebarPartial.cshtml" />
+    <Content Include="Content\sidebar.less" />
+    <Content Include="Content\sidebar.css.map">
+      <DependentUpon>sidebar.css</DependentUpon>
+    </Content>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
