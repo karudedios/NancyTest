@@ -28,14 +28,6 @@ namespace NancyTest.Search
                 Negotiate
                     .AsResponseType((string) parameters.resultType ?? ResponseType.JSON)
                     .WithModel(_values.Search((string) parameters.name).ToArray());
-
-
-            Post["/AddModelData/{name}/{lastname}/{cedula}"]
-           = Get["/AddModelData/{name}/{lastname}/{cedula}"]
-                = parameters =>
-                    Negotiate
-                        .WithModel(provider.Add(this.Bind<Model>()))
-                        .AsJSON();
         }
     }
 }
